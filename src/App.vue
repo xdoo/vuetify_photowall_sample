@@ -13,7 +13,7 @@
     </v-app-bar>
 
     <v-content>
-      <hello-world></hello-world>
+      <photo-wall></photo-wall>
     </v-content>
   </v-app>
 </template>
@@ -22,10 +22,10 @@
 import Vue from "vue"
 import { Component } from "vue-property-decorator"
 // components
-import HelloWorld from './components/HelloWorld.vue'
+import PhotoWall from './components/PhotoWall.vue'
 @Component({
   components: {
-    HelloWorld
+    PhotoWall
   }
 })
 export default class App extends Vue {
