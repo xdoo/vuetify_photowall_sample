@@ -19,18 +19,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-
-export default Vue.extend({
-  name: 'App',
-
+import Vue from "vue"
+import { Component } from "vue-property-decorator"
+// components
+import HelloWorld from './components/HelloWorld.vue'
+@Component({
   components: {
-    HelloWorld,
-  },
+    HelloWorld
+  }
+})
+export default class App extends Vue {
 
-  data: () => ({
-    //
-  }),
-});
+}
 </script>
