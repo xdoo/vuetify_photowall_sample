@@ -2,18 +2,32 @@
   <v-app>
     <v-app-bar
       app
-      color="black"
-      dark
+      color="white"
+      elevate-on-scroll
+      @click="scrollUp"
     >
-      <span class="headline">PhotoWall</span><span class="font-weight-light headline">Sample</span>
-
+      <v-btn icon class="ml-1">
+        <v-icon title="go back">mdi-arrow-left</v-icon>
+      </v-btn>
       <v-spacer></v-spacer>
-
-      <v-icon title="blubbber...">mdi-flask-outline</v-icon>
+      <v-btn icon class="mr-1">
+        <v-icon title="share">mdi-share-variant</v-icon>
+      </v-btn>
+      <v-btn icon class="mr-1">
+        <v-icon title="add">mdi-image-plus</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-content>
-      <photo-wall></photo-wall>
+      <v-container class="mx-0 px-0" fluid>
+        <v-row no-gutters>
+          <v-col cols="0" sm="0" md="1" lg="2" xl="3"></v-col>
+          <v-col cols="12" sm="12" md="10" lg="8" xl="6">
+            <album></album>
+          </v-col>
+          <v-col cols="0" sm="0" md="1" lg="2" xl="3"></v-col>
+        </v-row>
+      </v-container>
     </v-content>
   </v-app>
 </template>
@@ -22,13 +36,17 @@
 import Vue from "vue"
 import { Component } from "vue-property-decorator"
 // components
-import PhotoWall from './components/PhotoWall.vue'
+import Album from './components/Album.vue'
 @Component({
   components: {
-    PhotoWall
+    Album
   }
 })
 export default class App extends Vue {
+
+  scrollUp () {
+    console.log("scrolling...")
+  }
 
 }
 </script>
