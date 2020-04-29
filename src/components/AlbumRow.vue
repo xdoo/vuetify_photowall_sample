@@ -5,6 +5,7 @@
       :key="index"
       :row-height="optimalRowHeight"
       :image="image"
+      :rownum="rnd"
     ></album-image>
   </v-row>
 </template>
@@ -27,6 +28,8 @@ export default class AlbumRow extends Vue {
 
   @Prop ({ default: 10 }) readonly cols!: number
   @Prop () readonly images!: Array<ImageData>
+
+  rnd: number = Math.floor(Math.random() * Math.floor(100))
 
   get optimalRowHeight() {
     const ar = this.images[0].width / this.images[0].height

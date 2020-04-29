@@ -47,7 +47,6 @@ export default class Album extends Vue {
     const images = []
     for(let i = 0; i < 50; i++) {
       const rnd = Math.floor(Math.random() * Math.floor(4))
-      console.log(rnd)
       if(rnd > 2) {
         images.push(new ImageData(i, "https://picsum.photos/267/400", 267, 400))
       } else {
@@ -75,7 +74,6 @@ export default class Album extends Vue {
     let w = 0
     part.forEach(image => {
       image.width > image.height ? w = w + 2 : w = w + 1
-      console.log(w)
       if(w < 8) {
         row.push(image)
       }
