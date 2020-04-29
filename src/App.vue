@@ -21,11 +21,11 @@
     <v-content>
       <v-container class="mx-0 px-0" fluid>
         <v-row no-gutters>
-          <v-col cols="0" sm="0" md="1" lg="2" xl="3"></v-col>
-          <v-col cols="12" sm="12" md="10" lg="8" xl="6">
+          <v-col cols="0" sm="0" md="1" lg="1" xl="2"></v-col>
+          <v-col cols="12" sm="12" md="10" lg="10" xl="8">
             <album></album>
           </v-col>
-          <v-col cols="0" sm="0" md="1" lg="2" xl="3"></v-col>
+          <v-col cols="0" sm="0" md="1" lg="1" xl="2"></v-col>
         </v-row>
       </v-container>
     </v-content>

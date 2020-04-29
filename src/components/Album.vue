@@ -2,15 +2,27 @@
   <v-container fluid>
     <v-row class="display-2 ml-5 mt-9">Flowers, Trees & Bees</v-row>
     <v-row class="caption font-weight-light my-2 ml-5">16.Apr. 2011 - 26. Apr. 2020</v-row>
-    <v-row dense>
+    <v-row dense justify="start">
       <v-col>
-        <v-img></v-img>
+        <v-img
+          height="400"
+          width="600"
+          src="@/assets/images/001_400.jpg"
+        ></v-img>
       </v-col>
       <v-col>
-        <v-img></v-img>
+        <v-img
+          height="400"
+          width="267"
+          src="@/assets/images/002_400.jpg"
+        ></v-img>
       </v-col>
       <v-col>
-        <v-img></v-img>
+        <v-img
+          height="400"
+          width="267"
+          src="@/assets/images/003_400.jpg"
+        ></v-img>
       </v-col>
     </v-row>
 
