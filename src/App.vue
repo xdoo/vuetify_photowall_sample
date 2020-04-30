@@ -23,7 +23,7 @@
         <v-row no-gutters>
           <v-col cols="0" sm="0" md="1" lg="1" xl="1"></v-col>
           <v-col cols="12" sm="12" md="10" lg="10" xl="10">
-            <album></album>
+            <album cols="12" sm="12" md="10" lg="10" xl="10"></album>
           </v-col>
           <v-col cols="0" sm="0" md="1" lg="1" xl="1"></v-col>
         </v-row>

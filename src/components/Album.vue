@@ -8,6 +8,7 @@
       v-for="(row, index) in rows"
       :key="index"
       :images="row"
+      :cols="colsForViewport"
     ></album-row>
   </v-container>
 </template>
@@ -33,6 +34,26 @@ export default class Album extends Vue {
   @Prop () readonly md!: number
   @Prop () readonly lg!: number
   @Prop () readonly xl!: number
+
+  get colsForViewport() {
+    if(this.$vuetify.breakpoint.sm && this.sm) {
+      return this.sm
+    }
+
+    if(this.$vuetify.breakpoint.md && this.md) {
+      return this.md
+    }
+
+    if(this.$vuetify.breakpoint.lg && this.lg) {
+      return this.lg
+    }
+
+    if(this.$vuetify.breakpoint.xl && this.xl) {
+      return this.xl
+    }
+
+    return this.cols
+  }
 
   get rows() {
     // create a bunch of images
