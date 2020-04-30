@@ -48,7 +48,8 @@ export default class AlbumRow extends Vue {
     this.images.forEach(image => {
       totalRowAspectRatio = totalRowAspectRatio + image.width / image.height
     })
-    // finally get the optimized height
+    // finally get the optimized height 
+    // (-20 is for rounding and stuff)
     return Math.round((roww - glutter - 20) / totalRowAspectRatio)
   }
 

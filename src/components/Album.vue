@@ -54,7 +54,7 @@ export default class Album extends Vue {
     for(let i = 0; i < 50; i++) {
       const rnd = Math.floor(Math.random() * Math.floor(4))
       if(rnd > 2) {
-        images.push(new ImageData(i, "https://picsum.photos/300/400", 267, 400))
+        images.push(new ImageData(i, "https://picsum.photos/267/400", 267, 400))
       } else {
         images.push(new ImageData(i, "https://picsum.photos/600/400", 600, 400))
       }
