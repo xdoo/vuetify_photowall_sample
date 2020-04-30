@@ -4,7 +4,6 @@
     :width="width"
     :height="rowHeight"
     class="ma-1"
-    contain
   >h:{{rowHeight}} w:{{width}} {{rownum}}</v-img>
 </template>
 <script lang="ts">

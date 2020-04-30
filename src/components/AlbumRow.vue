@@ -39,18 +39,17 @@ export default class AlbumRow extends Vue {
   rnd: number = Math.floor(Math.random() * Math.floor(100))
 
   get optimalRowHeight() {
-    const ar = this.images[0].width / this.images[0].height
+    // how wide is the middle column?
     const roww = Math.round(this.$vuetify.breakpoint.width / 12) * this.cols
+    // the total border (ma-1)
     const glutter = 8 * this.images.length
-    let imgc = 0
+    // let's calc the total row aspect ratio for the row
+    let totalRowAspectRatio = 0
     this.images.forEach(image => {
-      image.width > image.height ? imgc = imgc + 2 : imgc = imgc + 1
+      totalRowAspectRatio = totalRowAspectRatio + image.width / image.height
     })
-    // relative breite pro spalte
-    const relw = (roww - glutter - 20) / imgc
-    console.log("row - " + this.rnd + " rel width: " + roww + " / " + imgc + " = " + relw)
-    const optimalHeight = this.images[0].width > this.images[0].height ? 2 * relw / ar : relw / ar
-    return Math.round(optimalHeight)
+    // finally get the optimized height
+    return Math.round((roww - glutter - 20) / totalRowAspectRatio)
   }
 
   imageCols (h: number, w: number) {
