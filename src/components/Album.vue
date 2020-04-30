@@ -51,6 +51,7 @@ export default class Album extends Vue {
   get rows() {
     // create a bunch of images
     const images = []
+    // generate so sample data. for bigger albums change 50 to whatever.
     for(let i = 0; i < 50; i++) {
       const rnd = Math.floor(Math.random() * Math.floor(4))
       if(rnd > 2) {
@@ -64,6 +65,7 @@ export default class Album extends Vue {
     const rows = new Array<Array<ImageData>>()
     let index = 0
 
+    // fill all rows with data 
     while(index < images.length) {
       const row = this.fillRow(images, index)
       index = index + row.length
@@ -73,6 +75,9 @@ export default class Album extends Vue {
     return rows
   }
 
+  /**
+   * fill a single row with a random amount of pics.
+   */
   fillRow(images: Array<ImageData>, startIndex: number) {
     const endindex = startIndex + 6 > images.length ? images.length : startIndex + 6
     const part = images.slice(startIndex, endindex)

@@ -2,7 +2,7 @@
   <v-img
     :src="image.src"
     :width="width"
-    :height="rowHeight"
+    :height="height"
     class="ma-1"
   >h:{{rowHeight}} w:{{width}} {{rownum}}</v-img>
 </template>
@@ -23,7 +23,11 @@ export default class AlbumImage extends Vue {
 
   get width() {
     const ar = this.image.width / this.image.height
-    return Math.round(this.rowHeight * ar)
+    return Math.round(this.height * ar)
+  }
+
+  get height() {
+    return this.rowHeight < this.image.height ? this.rowHeight : this.image.height 
   }
 
 }
