@@ -1,12 +1,19 @@
 <template>
-  <v-row>
-    <album-image
+  <v-row
+    justify="center" 
+    no-gutters
+  >
+    <v-col
       v-for="(image, index) in images"
       :key="index"
-      :row-height="optimalRowHeight"
-      :image="image"
-      :rownum="rnd"
-    ></album-image>
+      cols="auto"
+    >
+      <album-image
+        :row-height="optimalRowHeight"
+        :image="image"
+        :rownum="rnd"
+      ></album-image>
+    </v-col>
   </v-row>
 </template>
 <script lang="ts">
@@ -34,27 +41,20 @@ export default class AlbumRow extends Vue {
   get optimalRowHeight() {
     const ar = this.images[0].width / this.images[0].height
     const roww = Math.round(this.$vuetify.breakpoint.width / 12) * this.cols
+    const glutter = 8 * this.images.length
     let imgc = 0
     this.images.forEach(image => {
       image.width > image.height ? imgc = imgc + 2 : imgc = imgc + 1
     })
-    const relw = roww / imgc
+    // relative breite pro spalte
+    const relw = (roww - glutter - 20) / imgc
+    console.log("row - " + this.rnd + " rel width: " + roww + " / " + imgc + " = " + relw)
     const optimalHeight = this.images[0].width > this.images[0].height ? 2 * relw / ar : relw / ar
     return Math.round(optimalHeight)
   }
 
-  get dummyData() {
-    const data = []
-    for(let i = 0; i < 50; i++) {
-      const rnd = Math.floor(Math.random() * Math.floor(4))
-
-      if(rnd > 3) {
-        data.push(new ImageData(i, "https://picsum.photos/267/400", 267, 400))
-      } else {
-        data.push(new ImageData(i, "https://picsum.photos/600/400", 600, 400))
-      }
-    }
-    return data
+  imageCols (h: number, w: number) {
+    return w > h ? 2 : 1
   }
 }
 </script>

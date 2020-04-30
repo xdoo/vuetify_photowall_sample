@@ -1,8 +1,10 @@
 <template>
-  <v-container fluid>
+  <v-container 
+    class="pa-0"
+    fluid>
     <v-row class="display-2 ml-5 mt-9">Flowers, Trees & Bees</v-row>
     <v-row class="caption font-weight-light my-2 ml-5">16.Apr. 2011 - 26. Apr. 2020</v-row>
-    <v-row class="caption font-weight-light my-2 ml-5">{{columnWidth}} {{optimalRowHeight}}</v-row>
+    <v-row class="caption font-weight-light my-2 ml-5">col: {{columnWidth}} row: {{optimalRowHeight}} bp: {{breakpoint}}</v-row>
     <album-row
       v-for="(row, index) in rows"
       :key="index"
@@ -42,13 +44,17 @@ export default class Album extends Vue {
     return roww
   }
 
+  get breakpoint() {
+    return this.$vuetify.breakpoint.width
+  }
+
   get rows() {
     // create a bunch of images
     const images = []
     for(let i = 0; i < 50; i++) {
       const rnd = Math.floor(Math.random() * Math.floor(4))
       if(rnd > 2) {
-        images.push(new ImageData(i, "https://picsum.photos/267/400", 267, 400))
+        images.push(new ImageData(i, "https://picsum.photos/300/400", 300, 400))
       } else {
         images.push(new ImageData(i, "https://picsum.photos/600/400", 600, 400))
       }
