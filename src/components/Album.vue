@@ -4,7 +4,6 @@
     fluid>
     <v-row class="display-2 ml-5 mt-9">Flowers, Trees & Bees</v-row>
     <v-row class="caption font-weight-light my-2 ml-5">16.Apr. 2011 - 26. Apr. 2020</v-row>
-    <v-row class="caption font-weight-light my-2 ml-5">col: {{columnWidth}} row: {{optimalRowHeight}} bp: {{breakpoint}}</v-row>
     <album-row
       v-for="(row, index) in rows"
       :key="index"
@@ -34,19 +33,6 @@ export default class Album extends Vue {
   @Prop () readonly md!: number
   @Prop () readonly lg!: number
   @Prop () readonly xl!: number
-
-  get columnWidth() {
-    return Math.round(this.$vuetify.breakpoint.width / 12)
-  }
-
-  get optimalRowHeight() {
-    const roww = Math.round(this.$vuetify.breakpoint.width / 12) * this.cols
-    return roww
-  }
-
-  get breakpoint() {
-    return this.$vuetify.breakpoint.width
-  }
 
   get rows() {
     // create a bunch of images
