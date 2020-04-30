@@ -1,6 +1,6 @@
 <template>
   <v-row
-    justify="center" 
+    justify="start" 
     no-gutters
   >
     <v-col
