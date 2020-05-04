@@ -7,19 +7,21 @@
       :height="height"
       class="ma-1"
     >
-      <v-row
-        v-if="hover"
-        class="ma-0 gradient"
-      >
-        <v-btn 
-          icon 
-          small
-          :color="color"
-          @click="select()"
-          class="ma-1">
-          <v-icon class="check">mdi-check-circle</v-icon>
-        </v-btn>
-      </v-row>
+      <v-fade-transition>
+        <v-row
+          v-if="hover"
+          class="ma-0 gradient"
+        >
+          <v-btn 
+            icon 
+            small
+            :color="color"
+            @click="select()"
+            class="ma-1">
+            <v-icon class="check">mdi-check-circle</v-icon>
+          </v-btn>
+        </v-row>
+      </v-fade-transition>
     </v-img>
   </v-hover>
 </template>
