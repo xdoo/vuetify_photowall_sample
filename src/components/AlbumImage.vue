@@ -5,7 +5,20 @@
     :width="width"
     :height="height"
     class="ma-1"
-  >h:{{rowHeight}} w:{{width}} {{rownum}}</v-img>
+  >
+    <v-row
+      class="ma-0 gradient"
+    >
+      <v-btn 
+        icon 
+        small
+        :color="color"
+        @click="select()"
+        class="ma-1">
+        <v-icon class="check">mdi-check-circle</v-icon>
+      </v-btn>
+    </v-row>
+  </v-img>
 </template>
 <script lang="ts">
 import Vue from 'vue'
@@ -21,6 +34,16 @@ export default class AlbumImage extends Vue {
   @Prop () readonly rowHeight!: number
   @Prop () readonly image!: ImageData
   @Prop () readonly rownum!: string
+
+  selected = false
+
+  select () {
+    this.selected ? this.selected = false : this.selected = true 
+  }
+
+  get color() {
+    return this.selected ? "white" : "rgba(255, 255, 255, 0.6)"
+  }
 
   /**
    * calculates the optimized width of an image based
@@ -41,3 +64,12 @@ export default class AlbumImage extends Vue {
   }
 }
 </script>
+<style scoped>
+  .check:hover {
+    color: white;
+  }
+
+  .gradient {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0) );
+  }
+</style>
