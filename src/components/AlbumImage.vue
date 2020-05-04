@@ -5,17 +5,19 @@
       :lazy-src="image.lazySrc"
       :width="width"
       :height="height"
-      class="ma-1"
+      
+      class="ma-1 click"
     >
       <v-fade-transition>
         <v-row
-          v-if="hover"
+          v-if="hover || selected"
           class="ma-0 gradient"
         >
+          <!-- has to be a seperate component for hover functionality -->
           <v-btn 
             icon 
             small
-            :color="color"
+            :color="hover ? color : color"
             @click="select()"
             class="ma-1">
             <v-icon class="check">mdi-check-circle</v-icon>
@@ -42,10 +44,28 @@ export default class AlbumImage extends Vue {
 
   selected = false
 
-  select () {
-    this.selected ? this.selected = false : this.selected = true 
+  /**
+   * show image
+   */
+  show() {
+    this.selected ? console.log("...") : console.log("show picture " + this.image.src)
+    
   }
 
+  /**
+   * select image for a later action
+   */
+  select() {
+    this.selected = true 
+  }
+
+  deselect() {
+    this.selected = false
+  }
+
+  /**
+   * calculate the select (check) button color
+   */
   get color() {
     return this.selected ? "white" : "rgba(255, 255, 255, 0.6)"
   }
@@ -70,11 +90,16 @@ export default class AlbumImage extends Vue {
 }
 </script>
 <style scoped>
+  /* workaround for sass bug */
   .check:hover {
     color: white;
   }
 
   .gradient {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0) );
+  }
+
+  .click {
+    cursor: pointer;
   }
 </style>
