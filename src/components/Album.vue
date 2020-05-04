@@ -22,6 +22,9 @@ import AlbumRow from "@/components/AlbumRow.vue"
 // interfaces
 import ImageData from "@/model/ImageData"
 
+// services
+import AlbumService from "@/services/AbumService"
+
 @Component({
   components: {
     AlbumRow
@@ -57,16 +60,7 @@ export default class Album extends Vue {
 
   get rows() {
     // create a bunch of images
-    const images = []
-    // generate so sample data. for bigger albums change 50 to whatever.
-    for(let i = 0; i < 50; i++) {
-      const rnd = Math.floor(Math.random() * Math.floor(4))
-      if(rnd > 2) {
-        images.push(new ImageData(i, "https://picsum.photos/267/400", 267, 400))
-      } else {
-        images.push(new ImageData(i, "https://picsum.photos/600/400", 600, 400))
-      }
-    }
+    const images = AlbumService.loadAlbum()
     
     // create the array of rows...
     const rows = new Array<Array<ImageData>>()

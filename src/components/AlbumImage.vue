@@ -38,6 +38,5 @@ export default class AlbumImage extends Vue {
   get height() {
     return this.rowHeight < this.image.height ? this.rowHeight : this.image.height 
   }
-
 }
 </script>
