@@ -1,6 +1,7 @@
 <template>
   <v-img
     :src="image.src"
+    :lazy-src="image.lazySrc"
     :width="width"
     :height="height"
     class="ma-1"
