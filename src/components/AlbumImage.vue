@@ -1,24 +1,27 @@
 <template>
-  <v-img
-    :src="image.src"
-    :lazy-src="image.lazySrc"
-    :width="width"
-    :height="height"
-    class="ma-1"
-  >
-    <v-row
-      class="ma-0 gradient"
+  <v-hover v-slot:default=" { hover } ">
+    <v-img
+      :src="image.src"
+      :lazy-src="image.lazySrc"
+      :width="width"
+      :height="height"
+      class="ma-1"
     >
-      <v-btn 
-        icon 
-        small
-        :color="color"
-        @click="select()"
-        class="ma-1">
-        <v-icon class="check">mdi-check-circle</v-icon>
-      </v-btn>
-    </v-row>
-  </v-img>
+      <v-row
+        v-if="hover"
+        class="ma-0 gradient"
+      >
+        <v-btn 
+          icon 
+          small
+          :color="color"
+          @click="select()"
+          class="ma-1">
+          <v-icon class="check">mdi-check-circle</v-icon>
+        </v-btn>
+      </v-row>
+    </v-img>
+  </v-hover>
 </template>
 <script lang="ts">
 import Vue from 'vue'
