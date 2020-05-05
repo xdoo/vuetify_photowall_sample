@@ -5,25 +5,36 @@
       :lazy-src="image.lazySrc"
       :width="width"
       :height="height"
-      
       class="ma-1 click"
     >
-      <v-fade-transition>
-        <v-row
-          v-if="hover || selected"
-          class="ma-0 gradient"
-        >
-          <!-- has to be a seperate component for hover functionality -->
-          <v-btn 
-            icon 
-            small
-            :color="hover ? color : color"
-            @click="select()"
-            class="ma-1">
-            <v-icon class="check">mdi-check-circle</v-icon>
-          </v-btn>
+      <v-container full-height class="ma-0 pa-0">
+        <v-fade-transition>
+          <v-row
+            v-if="hover || selected"
+            class="ma-0 gradient"
+          >
+            <!-- has to be a seperate component for hover functionality -->
+            <v-btn 
+              icon 
+              small
+              :color="hover ? color : color"
+              @click="selected ? deselect() : select()"
+              class="ma-1">
+              <v-icon class="check">mdi-check-circle</v-icon>
+            </v-btn>
+          </v-row>
+        </v-fade-transition>
+        <v-row v-if="hover" class="ma-0">
+          <v-sheet
+            color="transparent"
+            width="100%"
+            :height="clickHeight"
+            tile
+            @click="selected ? deselect() : show()"
+            class="ma-0"
+          ></v-sheet>
         </v-row>
-      </v-fade-transition>
+      </v-container>
     </v-img>
   </v-hover>
 </template>
@@ -48,18 +59,19 @@ export default class AlbumImage extends Vue {
    * show image
    */
   show() {
-    this.selected ? console.log("...") : console.log("show picture " + this.image.src)
-    
+    console.log("show picture " + this.image.src)
   }
 
   /**
    * select image for a later action
    */
   select() {
+    console.log("select...")
     this.selected = true 
   }
 
   deselect() {
+    console.log("deselect...")
     this.selected = false
   }
 
@@ -86,6 +98,10 @@ export default class AlbumImage extends Vue {
    */
   get height() {
     return this.rowHeight < this.image.height ? this.rowHeight : this.image.height 
+  }
+
+  get clickHeight() {
+    return this.height - 28
   }
 }
 </script>
