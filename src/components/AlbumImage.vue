@@ -5,7 +5,7 @@
       :lazy-src="image.lazySrc"
       :width="width"
       :height="height"
-      class="ma-1 click"
+      class="ma-1"
     >
       <v-container full-height class="ma-0 pa-0">
         <v-fade-transition>
@@ -13,7 +13,6 @@
             v-if="hover || selected"
             class="ma-0 gradient"
           >
-            <!-- has to be a seperate component for hover functionality -->
             <v-btn 
               icon 
               small
@@ -31,7 +30,7 @@
             :height="clickHeight"
             tile
             @click="selected ? deselect() : show()"
-            class="ma-0"
+            class="ma-0 click"
           ></v-sheet>
         </v-row>
       </v-container>
@@ -70,6 +69,9 @@ export default class AlbumImage extends Vue {
     this.selected = true 
   }
 
+  /**
+   * deselect image
+   */
   deselect() {
     console.log("deselect...")
     this.selected = false
